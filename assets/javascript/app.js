@@ -37,7 +37,7 @@ database.ref().on('child_added', function (childSnapshot) {
 
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 
-  
+
   var tRemainder = diffTime % childSnapshot.val().frequency;
 
   // Minute Until Train
@@ -51,7 +51,8 @@ database.ref().on('child_added', function (childSnapshot) {
   childSnapshot.val().trainName  +'</td>'+
   '<td>'+childSnapshot.val().destination+'</td>'+
   '<td>'+childSnapshot.val().frequency+'</td>'+
-  '<td>'+ nextTrain + '</td></tr>');
+  '<td>'+ nextTrain + '</td>' +
+  '<td>'+tMinutesTillTrain+ '</td></tr>');
   },
   function (errorObject){
     console.log('Error handling: ' + errorObject.code);
